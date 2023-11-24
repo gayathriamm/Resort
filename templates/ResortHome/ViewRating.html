@@ -1,0 +1,40 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{% extends 'ResortHome/resort_index.html'%}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/search_rating#about">
+  <table width="450" border="1" class="table table-striped table-dark">
+    <tr>
+      <th height="52" colspan="4" scope="col">View Rating </th>
+    </tr>
+    <tr>
+      <td height="42" colspan="4"><label>
+        <input type="text" name="textfield" />
+        <input class="btn btn-outline-success" type="submit" name="Submit" value="Search" />
+      </label></td>
+    </tr>
+    <tr>
+      <td width="103" height="36">Username</td>
+      <td width="100">Rating</td>
+      <td width="115">Date</td>
+      <td width="104">Feedback</td>
+    </tr>
+      {% for i in val %}
+    <tr>
+      <td>{{ i.USER.username }}</td>
+      <td>{{ i.rate }}</td>
+      <td>{{ i.date }}</td>
+      <td>{{ i.feedback }}</td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{#</html>#}
+{% endblock %}

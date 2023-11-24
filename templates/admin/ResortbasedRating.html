@@ -1,0 +1,45 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+
+{% extends 'admin/admin_index.html'%}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/resort#about">
+  <table width="625" border="1" class="table table-striped table-dark">
+    <tr>
+      <th colspan="4" scope="col">Resort Based Rating </th>
+    </tr>
+    <tr>
+      <td height="41" colspan="4"><label>Resort
+          <select name="select">
+               <option value=""></option>
+            {% for i in val1 %}
+            <option value="{{ i.id }}">{{ i.resortname }}</option>
+            {% endfor %}
+          </select>
+          <input type="submit" name="Submit" value="Search" />
+      </label></td>
+    </tr>
+    <tr>
+      <td>username</td>
+      <td>Date</td>
+      <td>Feedback</td>
+      <td>Rating</td>
+    </tr>
+  {% for i in val %}
+    <tr>
+      <td>{{ i.USER.username }}</td>
+      <td>{{ i.date }}</td>
+        <td>{{ i.feedback }}</td>
+      <td>{{ i.rate }}</td>
+    </tr>
+  {% endfor %}
+  </table>
+</form>
+</body>
+{#</html>#}
+{% endblock %}

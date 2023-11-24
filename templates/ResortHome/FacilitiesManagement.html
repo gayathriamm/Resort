@@ -1,0 +1,42 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{% extends 'ResortHome/resort_index.html'%}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/search_faci#about">
+  <table width="372" border="1" class="table table-striped table-dark">
+    <tr>
+      <th height="41" colspan="3" scope="col">Facilities Management </th>
+    </tr>
+    <tr>
+      <td height="44" colspan="3"><label>
+        <input type="text" name="textfield" />
+        <input type="submit" name="Submit" value="Search" />
+      </label></td>
+    </tr>
+    <tr>
+      <td>Facility</td>
+      <td>Image</td>
+      <td>&nbsp;</td>
+    </tr>
+     {% for i in val %}
+    <tr>
+      <td>{{ i.facilities }}</td>
+      <td><img src="../media/{{i.image}}" height="100" width="100"></td>
+
+      <td><p><a href="edit_Facility/{{i.id}}" class="btn btn-outline-success">Edit</a></p>
+        <p><a href="delete_faci/{{i.id}}" class="btn btn-outline-danger">Delete</a></p></td>
+    </tr>
+      {% endfor %}
+    <tr>
+      <td colspan="6"><div align="center"><a href="/AddFacility#about" class="btn btn-outline-success">ADD NEW</a></div></td>
+    </tr>
+  </table>
+</form>
+</body>
+{#</html>#}
+{% endblock %}

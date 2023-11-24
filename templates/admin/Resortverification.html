@@ -1,0 +1,50 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{% extends 'admin/admin_index.html'%}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/search_resort#about">
+  <table width="883" height="269" border="1" class="table table-striped table-dark">
+    <tr>
+      <th colspan="7" scope="col"><label>
+        <input type="text" name="textfield" />
+        <input type="submit" name="Submit" value="Search" />
+      </label></th>
+    </tr>
+    <tr>
+      <td width="116"> <div align="center">Resort</div></td>
+      <td width="91"><div align="center">Address</div></td>
+      <td width="117"><div align="center">Image</div></td>
+      <td width="117"><div align="center">Phone</div></td>
+      <td width="128">Email</td>
+      <td width="142">Location</td>
+      <td width="126"><p>&nbsp;</p>      </td>
+    </tr>
+      {% for i in val %}
+    <tr>
+      <td>{{ i.resortname }}</td>
+      <td>{{ i.place }} {{i.post  }} {{ i.pin }} </td>
+      <td><img src="{{ i.image.url}}" width="100" height="100"> </td>
+      <td>{{i.phone }}</td>
+      <td>{{ i.email }}</td>
+      <td><a href="https://www.google.com/maps/@{{ i.lattitude }},{{ i.longitude }}" class="btn btn-outline-info">Track</a></td>
+
+      {% if i.LOGIN.type == 'pending' %}
+          <td>
+          <a href="accept_resort/{{ i.LOGIN.id }}" class="btn btn-outline-success">Accept</a><br>
+      <a href="reject_resort/{{ i.LOGIN.id  }}" class="btn btn-outline-danger">Reject</a></td>
+      {% elif i.LOGIN.type == 'reject' %}<td>Rejected</td>
+        {% else %}
+      <td>Accepted</td>
+        {% endif %}
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{#</html>#}
+{% endblock %}

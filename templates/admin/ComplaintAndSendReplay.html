@@ -1,0 +1,39 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{% extends 'admin/admin_index.html'%}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/search_user#about">
+  <table width="501" height="266" border="1" class="table table-striped table-dark">
+    <tr>
+      <th colspan="4" scope="col">Complaints and send Replay </th>
+    </tr>
+    <tr>
+      <td colspan="4"><label>
+        <input type="text" name="textfield" />
+        <input type="submit" name="Submit" value="Search" />
+      </label></td>
+    </tr>
+    <tr>
+      <td width="123" height="62">Username</td>
+      <td width="101">Date</td>
+      <td width="124">Complaints</td>
+      <td width="125">&nbsp;</td>
+    </tr>
+     {% for i in val %}
+    <tr>
+      <td>{{ i.USER.username }}</td>
+      <td>{{ i.date }}</td>
+      <td>{{ i.compaint}}</td>
+      <td><a href="SendReply/{{i.id}}#about" class="btn btn-outline-warning">Reply</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{#</html>#}
+{% endblock %}

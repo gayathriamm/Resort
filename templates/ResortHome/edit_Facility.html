@@ -1,0 +1,32 @@
+{% extends 'ResortHome/resort_index.html'%}
+{% block body %}
+<body>
+<form action="/edit_faci" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table width="346" border="1" class="table table-striped table-dark">
+    <tr>
+      <th width="336" height="83" scope="col">Add Facility</th>
+    </tr>
+    <tr>
+      <td height="52">Facility
+        <label>
+        <input type="text" name="textfield" value="{{ val.facilities }}" required/>
+      </label></td>
+    </tr>
+    <tr>
+      <td height="70">Image
+        <label>
+        <input type="file" name="file" value="{{ i.image }}" required/>
+             {{val.image}}
+          <img src="{{val.image.url}}" height="100" width="100">
+      </label></td>
+    </tr>
+    <tr>
+      <td height="64"><label>
+        <input type="submit" name="Submit" value="ADD" />
+      </label></td>
+    </tr>
+  </table>
+</form>
+</body>
+{#</html>#}
+{% endblock %}
